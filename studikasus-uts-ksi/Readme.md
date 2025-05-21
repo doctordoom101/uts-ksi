@@ -1,45 +1,27 @@
-# INSTRUCTION
-- buka terminal ketikkan
-```php
-git clone git@github.com:djambred/ksi.git
-atau
-git clone https://github.com/djambred/ksi.git
-```
-- masuk ke dalam folder yang telah di clone
-```php
-cd ksi
-docker compose up -d --build
-docker exec -it ksi bash
-composer install
-mv .env.example .env
-php artisan storage:link
-php artisan key:generate
-exit 
-code .
-```
-- edit file .env
-```php 
-APP_TIMEZONE='Asia/Jakarta'
-APP_URL=http://localhost
-ASSET_URL=http://localhost
-DB_CONNECTION=mariadb
-DB_HOST=db_ksi
-DB_PORT=3306
-DB_DATABASE=ksi
-DB_USERNAME=root
-DB_PASSWORD=p455w0rd
-```
-- masih didalam container (docker exec -it ksi bash)
-```php
-chown -R www-data:www-data storage/*
-chown -R www-data:www-data bootstrap/*
-php artisan migrate
-php artisan project:init
-```
-- buka browser dan akses localhost
-```php
-user: admin@admin.com
-pass: password
-```
-- buka postman dan lakukan get ke localhost/api/products
-- set authentication in postman to bearer
+Defanda Yeremia - 20230801205
+
+# Tema Data Guru
+
+## 🧾 Overview 
+
+Sistem ini terdiri dari beberapa data utama yang saling terhubung, yaitu:
+
+- **Guru**: Menyimpan data guru seperti nama, NIP, telepon, dan alamat.
+- **Mapel**: Menyimpan daftar mata pelajaran yang diajarkan.
+- **Kelas**: Menyimpan data kelas beserta tingkatannya.
+- **Jadwal Mengajar**: Menyimpan jadwal guru mengajar, termasuk hari, jam, kelas, dan mapel yang diajarkan.
+
+## Struktur Data & Relasi
+
+![alt text](img/download.jpg)
+
+### Entitas Utama:
+1. **Guru**
+2. **Mapel** (Mata Pelajaran)
+3. **Kelas**
+4. **Jadwal Mengajar** (Pivot Table antara Guru, Mapel, dan Kelas)
+
+### Relasi:
+- Satu guru dapat mengajar banyak kelas.
+- Satu kelas memiliki beberapa guru dengan mapel berbeda.
+- Jadwal mengajar menghubungkan guru, mapel, dan kelas dalam satu entitas waktu.
