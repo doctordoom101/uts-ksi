@@ -2,7 +2,7 @@ Defanda Yeremia - 20230801205
 
 # Tema Data Guru
 
-## 🧾 Overview 
+## Overview 
 
 Sistem ini terdiri dari beberapa data utama yang saling terhubung, yaitu:
 
