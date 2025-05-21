@@ -48,7 +48,10 @@ class GuruResource extends Resource
                 Tables\Columns\TextColumn::make('nip')
                     ->searchable(),
                 Tables\Columns\TextColumn::make('no_telepon')
-                    ->searchable(),
+                    ->searchable(), 
+                    Tables\Columns\TextColumn::make('api_token')
+                    ->searchable()
+                    ->copyable(),
                 Tables\Columns\TextColumn::make('created_at')
                     ->dateTime()
                     ->sortable()

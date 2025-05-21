@@ -11,14 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('gurus', function (Blueprint $table) {
+        Schema::create('encrypted_data', function (Blueprint $table) {
             $table->id();
-            $table->string('nama');
-            $table->string('nip')->unique();
-            $table->string('no_telepon');
-            $table->text('alamat');
+            $table->text('encrypted_data');
+            $table->text('decryption_key');
+            $table->text('decrypted_data')->nullable();
             $table->timestamps();
-            $table->string('api_token')->unique();
         });
     }
 
@@ -27,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('gurus');
+        Schema::dropIfExists('encrypted_data');
     }
 };
